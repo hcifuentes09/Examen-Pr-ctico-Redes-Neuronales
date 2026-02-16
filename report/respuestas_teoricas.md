@@ -1,5 +1,6 @@
 # Examen Práctico – Redes Neuronales
 
+
 ## Parte I: Exploración del Conjunto de Datos
 
 ### 1. Exploración inicial del dataset
@@ -133,6 +134,132 @@ El MSE es preferido frente al error absoluto medio (MAE) porque es diferenciable
 
 **q) Estabilización de la función de pérdida**
 Que la función de pérdida se estabilice significa que su valor deja de disminuir de forma significativa entre iteraciones. Esto indica que el modelo ha alcanzado un estado de convergencia, en el cual los pesos y el sesgo ya no cambian de manera apreciable y el algoritmo ha llegado a un mínimo de la función de pérdida [1].
+
+
+## Parte 3: Retropropagación y gradiente descendente
+
+### 9. Cálculo gradiente
+
+**r) Derivación de \(\partial L / \partial w\)**
+Partimos de la función de pérdida para regresión:
+
+\[
+L = \frac{1}{m} \sum_{i=1}^{m} (\hat{y}_i - y_i)^2
+\]
+
+donde, para una activación lineal, las predicciones del modelo están dadas por:
+
+\[
+\hat{y} = Xw + b
+\]
+
+Definimos el vector de error como:
+
+\[
+e = \hat{y} - y
+\]
+
+La función de pérdida puede escribirse en forma matricial como:
+
+\[
+L = \frac{1}{m} e^T e
+\]
+
+Al derivar la pérdida respecto al vector de pesos \(w\) y aplicar las reglas de derivación matricial, se obtiene:
+
+\[
+\frac{\partial L}{\partial w} = \frac{2}{m} X^T (\hat{y} - y)
+\]
+
+Esta expresión indica cómo varía la pérdida ante cambios en los pesos del modelo y corresponde a la formulación presentada en el **Capítulo 2 del material del curso** para problemas de regresión entrenados mediante descenso del gradiente \[1].
+
+**s) Derivación de \(\partial L / \partial b\)**
+El sesgo \(b\) afecta de igual forma a todas las predicciones del modelo, ya que:
+
+\[
+\hat{y}_i = w^T x_i + b
+\]
+
+Al derivar la función de pérdida respecto al sesgo, se obtiene:
+
+\[
+\frac{\partial L}{\partial b} = \frac{2}{m} \sum_{i=1}^{m} (\hat{y}_i - y_i)
+\]
+
+Este gradiente representa el error promedio acumulado del modelo y determina cómo debe ajustarse el sesgo durante el proceso de entrenamiento \[1].
+
+**t) Interpretación geométrica del gradiente**
+El gradiente de una función señala la **dirección de máxima pendiente ascendente** de la superficie que representa dicha función.  
+En la metáfora de la montaña descrita en el **Capítulo 2**, la función de pérdida corresponde a la altura del terreno y los pesos del modelo representan la posición del excursionista.
+Moverse en la dirección del gradiente implica ascender más rápidamente; por ello, para minimizar la pérdida, el algoritmo de aprendizaje avanza en la dirección opuesta al gradiente.
+
+**u) Significado del signo negativo en la regla de actualización**
+La regla de actualización de los pesos está dada por:
+
+\[
+w \leftarrow w - \eta \nabla L
+\]
+
+El signo negativo indica que el objetivo del aprendizaje es **minimizar** la función de pérdida. Dado que el gradiente apunta hacia el aumento más rápido de la pérdida, restarlo permite desplazarse en la dirección contraria, conduciendo al modelo hacia un mínimo de la función. Este principio constituye la base del algoritmo de **descenso del gradiente**, tal como se presenta en el material del curso \[1].
+
+### 10. Cálculo de gradientes
+
+**v) Implementación de los gradientes**
+La función `calcular_gradientes` se implementó utilizando las expresiones derivadas en el punto anterior. El gradiente respecto a los pesos se calcula como:
+
+\[
+\frac{\partial L}{\partial w} = \frac{2}{m} X^T (\hat{y} - y)
+\]
+
+mientras que el gradiente respecto al sesgo está dado por:
+
+\[
+\frac{\partial L}{\partial b} = \frac{2}{m} \sum_{i=1}^{m} (\hat{y}_i - y_i)
+\]
+
+Estas fórmulas permiten cuantificar cómo deben ajustarse los parámetros del modelo para reducir la pérdida, de acuerdo con el algoritmo de descenso del gradiente descrito en el **Capítulo 2 del material del curso** \[1].
+
+**w) Forma del gradiente respecto a los pesos**
+El gradiente \(dw\) tiene la misma forma que el vector de pesos \(w\), es decir, una matriz de dimensión \((n, 1)\). Esto es necesario porque la actualización de los parámetros se realiza mediante la operación:
+
+\[
+w \leftarrow w - \eta \, dw
+\]
+
+La coherencia dimensional garantiza que la resta esté bien definida y que cada peso se actualice con su gradiente correspondiente.
+
+**x) Gradientes cuando las predicciones son perfectas**
+Si todas las predicciones del modelo coinciden exactamente con los valores reales, se cumple que:
+
+\[
+\hat{y} = y
+\]
+
+En este caso, el error es nulo y tanto \(dw\) como \(db\) toman el valor cero. Esto indica que el modelo ha alcanzado un mínimo de la función de pérdida y que no se requieren más actualizaciones de los parámetros, lo cual corresponde al concepto de convergencia \[1].
+
+### 11. Actualización de parámetros
+
+**y) Regla de actualización del gradiente descendente**
+La actualización de los parámetros del perceptrón se realiza mediante el descenso del gradiente, siguiendo las expresiones:
+
+\[
+\mathbf{w} \leftarrow \mathbf{w} - \eta \nabla_{\mathbf{w}} L
+\quad \text{y} \quad
+b \leftarrow b - \eta \frac{\partial L}{\partial b}
+\]
+
+donde \(\eta\) es la tasa de aprendizaje y \(\nabla L\) indica el gradiente de la función de pérdida respecto a los parámetros del modelo [1].
+
+**z) Tasa de aprendizaje (\(\eta\))**
+La tasa de aprendizaje controla el tamaño del paso que se da en cada iteración del descenso del gradiente. Si \(\eta\) es **demasiado grande**, el algoritmo puede oscilar o divergir y no converger al mínimo. Si \(\eta\) es **demasiado pequeña**, la convergencia será muy lenta, aumentando el tiempo de entrenamiento. Por ello, la elección de \(\eta\) es crítica para un aprendizaje estable y eficiente [1].
+
+**aa) Ejecución de una iteración completa**
+Se ejecutó una iteración completa del algoritmo: propagación hacia adelante, cálculo de la pérdida, cálculo de gradientes y actualización de parámetros. La pérdida **disminuyó** tras la actualización, pasando de **92964.53** a **90167.59**, lo cual indica que el perceptrón ajustó sus parámetros en la dirección que reduce el error. Este comportamiento confirma que el algoritmo de retropropagación y el descenso del gradiente están funcionando correctamente y que el modelo comienza a aprender a partir de los datos [1].
+
+
+
+
+
 
 
 
