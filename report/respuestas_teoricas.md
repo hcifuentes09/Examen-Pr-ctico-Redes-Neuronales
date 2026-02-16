@@ -70,6 +70,77 @@ donde \(\mu\) es la media de la característica y \(\sigma\) su desviación est�
 Se utiliza `fit_transform` en el conjunto de entrenamiento para ajustar los parámetros de normalización y aplicar la transformación. En el conjunto de prueba se emplea únicamente `transform` para aplicar la misma transformación ya aprendida, evitando la filtración de información (*data leakage*) y garantizando una evaluación correcta del modelo [3].
 
 
+## Parte 2: Arquitectura del perceptron
+
+### 6. Incialización de parámetros
+
+**g) ¿Por qué es conveniente inicializar los pesos con valores aleatorios pequeños en lugar de ceros?**
+Es conveniente inicializar los pesos con valores aleatorios pequeños para **romper la simetría** del modelo y permitir que cada peso evolucione de manera diferente durante el entrenamiento.  
+Si todos los pesos se inicializaran en cero, el gradiente sería idéntico para cada uno y el modelo no podría aprender representaciones diferenciadas.  Además, valores pequeños evitan activaciones excesivamente grandes al inicio, favoreciendo una dinámica estable del descenso del gradiente, como se describe en el **Capítulo 2 del material del curso** [1].
+
+**h) ¿Qué forma debe tener el vector de pesos \( \mathbf{w} \)?**
+Según la notación del **Capítulo 2**, el vector de pesos \( \mathbf{w} \) debe representarse como un **vector columna** de dimensión \( (n,1) \), donde \( n \) es el número de características de entrada. En este caso, como el conjunto de datos tiene **8 características**, se obtiene  
+\( \mathbf{w} \in \mathbb{R}^{8 \times 1} \), lo cual se verifica al imprimir `w.shape` tras llamar a la función de inicialización [1].
+
+**i) ¿Por qué el sesgo \( b \) se inicializa típicamente en cero mientras los pesos no?**
+El sesgo \( b \) se inicializa en cero porque **no introduce problemas de simetría** como los pesos y actúa únicamente como un término de desplazamiento. Durante el entrenamiento, el sesgo se ajusta mediante descenso del gradiente junto con los pesos, permitiendo desplazar la salida del modelo sin afectar la dirección inicial del aprendizaje [1].
+
+### 7. Implementación de la suma ponderada (propagación hacia adelante)
+
+**j) ¿Por qué usamos \( X \mathbf{w} \) en lugar de \( \mathbf{w}^T X \)?**
+Cuando \( X \) tiene forma \( (m,n) \) y el vector de pesos \( \mathbf{w} \) tiene forma \( (n,1) \),
+el producto matricial \( X \mathbf{w} \) produce un vector columna de dimensión \( (m,1) \), correspondiente a una predicción por observación. La expresión \( \mathbf{w}^T X \) no es compatible dimensionalmente en este contexto. Este uso sigue directamente la formulación matricial del perceptrón presentada en el **Capítulo 2 del material del curso** [1].
+
+**k) ¿Qué función de activación se usa en este problema de regresión? ¿Por qué?**
+En este problema de regresión se utiliza una **función de activación lineal (identidad)**, es decir, no se aplica ninguna transformación no lineal a la salida. Esto se debe a que el objetivo es predecir un **valor continuo**, y la salida del modelo debe pertenecer a la recta real, tal como se describe en el **Capítulo 2** [1].
+
+**l) Predicciones iniciales y comparación con valores reales**
+Al evaluar la función de propagación hacia adelante sobre los primeros cinco ejemplos del conjunto de entrenamiento, se obtienen las siguientes predicciones iniciales:
+
+Predicciones:
+\[
+[\, 0.0147,\ -0.0178,\ 0.0463,\ 0.0197,\ -0.0243 \,]
+\]
+
+Valores reales:
+\[
+[\, 1.03,\ 3.821,\ 1.726,\ 0.934,\ 0.965 \,]
+\]
+
+Las predicciones iniciales difieren significativamente de los valores reales y se encuentran cercanas a cero. Esto es esperable, ya que el modelo aún no ha sido entrenado y los pesos fueron inicializados con valores aleatorios pequeños.
+Por lo tanto, las predicciones iniciales **no son buenas**, pero establecen el punto de partida para el proceso de aprendizaje mediante descenso del gradiente [1].
+
+**m) Diagrama del flujo de datos**
+Respuesta: figures/m)Diagrama de flujo.jpeg
+El diagrama muestra el flujo de datos del perceptrón: cada característica de entrada \(x_i\) se multiplica por su peso \(w_i\), los productos se suman en una combinación lineal \(w^T x\), y posteriormente se añade el sesgo \(b\) para obtener la salida \(y_{\text{pred}}\).
+
+### 8. Función de pérdida
+
+**n) Uso del cuadrado en la función de pérdida**
+Las diferencias se elevan al cuadrado para penalizar con mayor severidad los errores grandes y asegurar que la función de pérdida sea suave y diferenciable. Esta propiedad es fundamental para aplicar el descenso del gradiente, ya que el MSE posee derivadas continuas respecto a los parámetros del modelo, tal como se describe en el Capítulo 2 del material del curso [1].
+
+**o) Pérdida inicial del modelo**
+La pérdida inicial del modelo, calculada con pesos aleatorios y sesgo inicial, es:
+
+\[
+\text{MSE}_{\text{inicial}} = 5.63
+\]
+
+Este valor representa el error del modelo antes del entrenamiento y se utilizará como referencia para evaluar la reducción de la pérdida tras aplicar el descenso del gradiente durante el proceso de aprendizaje.
+
+**p) Ventajas del MSE en optimización**
+El MSE es preferido frente al error absoluto medio (MAE) porque es diferenciable en todo su dominio. Esto permite calcular gradientes de forma estable y eficiente, facilitando la convergencia del algoritmo de descenso del gradiente, como se explica en el Capítulo 2 del material del curso [1].
+
+**q) Estabilización de la función de pérdida**
+Que la función de pérdida se estabilice significa que su valor deja de disminuir de forma significativa entre iteraciones. Esto indica que el modelo ha alcanzado un estado de convergencia, en el cual los pesos y el sesgo ya no cambian de manera apreciable y el algoritmo ha llegado a un mínimo de la función de pérdida [1].
+
+
+
+
+
+
+
+
 
 
 
