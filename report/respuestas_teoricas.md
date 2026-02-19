@@ -168,41 +168,29 @@ $$\mathbf{w} \leftarrow \mathbf{w} - \eta \nabla L$$
 
 El signo negativo indica que el objetivo del aprendizaje es **minimizar** la función de pérdida. Dado que el gradiente apunta hacia el aumento más rápido de la pérdida, restarlo permite desplazarse en la dirección contraria, conduciendo al modelo hacia un mínimo de la función. Este principio constituye la base del algoritmo de **descenso del gradiente**, tal como se presenta en el material del curso [1].
 
-### 10. Cálculo de gradientes
+## 10. Cálculo de gradientes
 
-**v) Implementación de los gradientes**
-La función `calcular_gradientes` se implementó utilizando las expresiones derivadas en el punto anterior. El gradiente respecto a los pesos se calcula como:
+**v) Implementación de los gradientes** La función `calcular_gradientes` se implementó utilizando las expresiones derivadas en el punto anterior. El gradiente respecto a los pesos se calcula como:
 
-\[
-\frac{\partial L}{\partial w} = \frac{2}{m} X^T (\hat{y} - y)
-\]
+$$\frac{\partial L}{\partial \mathbf{w}} = \frac{2}{m} X^T (\hat{\mathbf{y}} - \mathbf{y})$$
 
 mientras que el gradiente respecto al sesgo está dado por:
 
-\[
-\frac{\partial L}{\partial b} = \frac{2}{m} \sum_{i=1}^{m} (\hat{y}_i - y_i)
-\]
+$$\frac{\partial L}{\partial b} = \frac{2}{m} \sum_{i=1}^{m} (\hat{y}_i - y_i)$$
 
-Estas fórmulas permiten cuantificar cómo deben ajustarse los parámetros del modelo para reducir la pérdida, de acuerdo con el algoritmo de descenso del gradiente descrito en el **Capítulo 2 del material del curso** \[1].
+Estas fórmulas permiten cuantificar cómo deben ajustarse los parámetros del modelo para reducir la pérdida, de acuerdo con el algoritmo de descenso del gradiente descrito en el **Capítulo 2 del material del curso** [1].
 
-**w) Forma del gradiente respecto a los pesos**
-El gradiente \(dw\) tiene la misma forma que el vector de pesos \(w\), es decir, una matriz de dimensión \((n, 1)\). Esto es necesario porque la actualización de los parámetros se realiza mediante la operación:
+**w) Forma del gradiente respecto a los pesos** El gradiente ($dw$) tiene la misma forma que el vector de pesos ($\mathbf{w}$), es decir, una matriz de dimensión ($n, 1$). Esto es necesario porque la actualización de los parámetros se realiza mediante la operación:
 
-\[
-w \leftarrow w - \eta \, dw
-\]
+$$\mathbf{w} \leftarrow \mathbf{w} - \eta \cdot dw$$
 
 La coherencia dimensional garantiza que la resta esté bien definida y que cada peso se actualice con su gradiente correspondiente.
 
-**x) Gradientes cuando las predicciones son perfectas**
-Si todas las predicciones del modelo coinciden exactamente con los valores reales, se cumple que:
+**x) Gradientes cuando las predicciones son perfectas** Si todas las predicciones del modelo coinciden exactamente con los valores reales, se cumple que:
 
-\[
-\hat{y} = y
-\]
+$$\hat{\mathbf{y}} = \mathbf{y}$$
 
-En este caso, el error es nulo y tanto \(dw\) como \(db\) toman el valor cero. Esto indica que el modelo ha alcanzado un mínimo de la función de pérdida y que no se requieren más actualizaciones de los parámetros, lo cual corresponde al concepto de convergencia \[1].
-
+En este caso, el error es nulo y tanto ($dw$) como ($db$) toman el valor cero. Esto indica que el modelo ha alcanzado un mínimo de la función de pérdida y que no se requieren más actualizaciones de los parámetros, lo cual corresponde al concepto de **convergencia** [1].
 ### 11. Actualización de parámetros
 
 **y) Regla de actualización del gradiente descendente**
