@@ -47,6 +47,8 @@ california-housing-perceptron/
 └── README.md
 │   → Descripción general del proyecto y guía de uso.
 
+```
+
 ## Contenido del proyecto
 
 El desarrollo del examen se divide en las siguientes partes:
