@@ -9,6 +9,7 @@ El proyecto integra tanto el desarrollo práctico en Python como el análisis te
 
 ## Estructura del proyecto
 
+```text
 california-housing-perceptron/
 │
 ├── notebooks/
@@ -45,7 +46,6 @@ california-housing-perceptron/
 │
 └── README.md
 │   → Descripción general del proyecto y guía de uso.
-
 
 ## Contenido del proyecto
 
