@@ -187,26 +187,17 @@ La coherencia dimensional garantiza que la resta esté bien definida y que cada 
 $$\hat{\mathbf{y}} = \mathbf{y}$$
 
 En este caso, el error es nulo y tanto ($dw$) como ($db$) toman el valor cero. Esto indica que el modelo ha alcanzado un mínimo de la función de pérdida y que no se requieren más actualizaciones de los parámetros, lo cual corresponde al concepto de **convergencia** [1].
-### 11. Actualización de parámetros
+## 11. Actualización de parámetros
 
-**y) Regla de actualización del gradiente descendente**
-La actualización de los parámetros del perceptrón se realiza mediante el descenso del gradiente, siguiendo las expresiones:
+**y) Regla de actualización del gradiente descendente** La actualización de los parámetros del perceptrón se realiza mediante el descenso del gradiente, siguiendo las expresiones:
 
-\[
-\mathbf{w} \leftarrow \mathbf{w} - \eta \nabla_{\mathbf{w}} L
-\quad \text{y} \quad
-b \leftarrow b - \eta \frac{\partial L}{\partial b}
-\]
+$$\mathbf{w} \leftarrow \mathbf{w} - \eta \nabla_{\mathbf{w}} L \quad \text{y} \quad b \leftarrow b - \eta \frac{\partial L}{\partial b}$$
 
-donde \(\eta\) es la tasa de aprendizaje y \(\nabla L\) indica el gradiente de la función de pérdida respecto a los parámetros del modelo [1].
+donde ($\eta$) es la tasa de aprendizaje y ($\nabla L$) indica el gradiente de la función de pérdida respecto a los parámetros del modelo [1].
 
-**z) Tasa de aprendizaje (\(\eta\))**
-La tasa de aprendizaje controla el tamaño del paso que se da en cada iteración del descenso del gradiente. Si \(\eta\) es **demasiado grande**, el algoritmo puede oscilar o divergir y no converger al mínimo. Si \(\eta\) es **demasiado pequeña**, la convergencia será muy lenta, aumentando el tiempo de entrenamiento. Por ello, la elección de \(\eta\) es crítica para un aprendizaje estable y eficiente [1].
+**z) Tasa de aprendizaje ($\eta$)** La tasa de aprendizaje controla el tamaño del paso que se da en cada iteración del descenso del gradiente. Si ($\eta$) es **demasiado grande**, el algoritmo puede oscilar o divergir y no converger al mínimo. Si ($\eta$) es **demasiado pequeña**, la convergencia será muy lenta, aumentando el tiempo de entrenamiento. Por ello, la elección de ($\eta$) es crítica para un aprendizaje estable y eficiente [1].
 
-**aa) Ejecución de una iteración completa**
-Se ejecutó una iteración completa del algoritmo: propagación hacia adelante, cálculo de la pérdida, cálculo de gradientes y actualización de parámetros. La pérdida **disminuyó** tras la actualización, pasando de **92964.53** a **90167.59**, lo cual indica que el perceptrón ajustó sus parámetros en la dirección que reduce el error. Este comportamiento confirma que el algoritmo de retropropagación y el descenso del gradiente están funcionando correctamente y que el modelo comienza a aprender a partir de los datos [1].
-
-
+**aa) Ejecución de una iteración completa** Se ejecutó una iteración completa del algoritmo: propagación hacia adelante, cálculo de la pérdida, cálculo de gradientes y actualización de parámetros. La pérdida **disminuyó** tras la actualización, pasando de **92964.53** a **90167.59**, lo cual indica que el perceptrón ajustó sus parámetros en la dirección que reduce el error. Este comportamiento confirma que el algoritmo de retropropagación y el descenso del gradiente están funcionando correctamente y que el modelo comienza a aprender a partir de los datos [1].
 ## Parte 4: Entrenamiento completo
 
 ### 12.	Implementación del ciclo de entrenamiento completo
