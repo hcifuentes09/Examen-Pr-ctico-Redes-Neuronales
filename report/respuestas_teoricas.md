@@ -49,12 +49,9 @@ A partir de la división del conjunto de datos en entrenamiento y prueba, se apl
 **d) Importancia de la normalización:**  
 La normalización de las características es fundamental para el entrenamiento estable de una red neuronal, ya que el proceso de descenso del gradiente es sensible a la escala de las variables de entrada, como se discute en el Capítulo 2 del material del curso [1]. Si las características presentan magnitudes muy diferentes, la función de pérdida adquiere una geometría alargada, lo que provoca oscilaciones y una convergencia lenta del algoritmo.
 
-**e) ¿Qué hace exactamente StandardScaler?**
-Según la documentación oficial de scikit-learn, `StandardScaler` estandariza cada característica restando su media y dividiéndola por su desviación estándar [3]:
+**e) ¿Qué hace exactamente StandardScaler?** Según la documentación oficial de scikit-learn, `StandardScaler` estandariza cada característica restando su media y dividiéndola por su desviación estándar:
 
-\[
-x_{\text{norm}} = \frac{x - \mu}{\sigma}
-\]
+$$x_{\text{norm}} = \frac{x - \mu}{\sigma}$$
 
 donde \(\mu\) es la media de la característica y \(\sigma\) su desviación estándar, calculadas sobre el conjunto de entrenamiento.
 
