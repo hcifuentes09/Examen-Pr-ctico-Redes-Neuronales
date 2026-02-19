@@ -149,34 +149,24 @@ $$\frac{\partial L}{\partial \mathbf{w}} = \frac{2}{m} X^T (\hat{\mathbf{y}} - \
 
 Esta expresión indica cómo varía la pérdida ante cambios en los pesos del modelo y corresponde a la formulación presentada en el **Capítulo 2 del material del curso** para problemas de regresión entrenados mediante descenso del gradiente [1].
 
-**s) Derivación de \(\partial L / \partial b\)**
-El sesgo \(b\) afecta de igual forma a todas las predicciones del modelo, ya que:
+**s) Derivación de ($\frac{\partial L}{\partial b}$)** El sesgo ($b$) afecta de igual forma a todas las predicciones del modelo, ya que:
 
-\[
-\hat{y}_i = w^T x_i + b
-\]
+$$\hat{y}_i = \mathbf{w}^T \mathbf{x}_i + b$$
 
 Al derivar la función de pérdida respecto al sesgo, se obtiene:
 
-\[
-\frac{\partial L}{\partial b} = \frac{2}{m} \sum_{i=1}^{m} (\hat{y}_i - y_i)
-\]
+$$\frac{\partial L}{\partial b} = \frac{2}{m} \sum_{i=1}^{m} (\hat{y}_i - y_i)$$
 
-Este gradiente representa el error promedio acumulado del modelo y determina cómo debe ajustarse el sesgo durante el proceso de entrenamiento \[1].
+Este gradiente representa el error promedio acumulado del modelo y determina cómo debe ajustarse el sesgo durante el proceso de entrenamiento [1].
 
-**t) Interpretación geométrica del gradiente**
-El gradiente de una función señala la **dirección de máxima pendiente ascendente** de la superficie que representa dicha función.  
-En la metáfora de la montaña descrita en el **Capítulo 2**, la función de pérdida corresponde a la altura del terreno y los pesos del modelo representan la posición del excursionista.
-Moverse en la dirección del gradiente implica ascender más rápidamente; por ello, para minimizar la pérdida, el algoritmo de aprendizaje avanza en la dirección opuesta al gradiente.
+**t) Interpretación geométrica del gradiente** El gradiente de una función señala la **dirección de máxima pendiente ascendente** de la superficie que representa dicha función.
+En la metáfora de la montaña descrita en el **Capítulo 2**, la función de pérdida corresponde a la altura del terreno y los pesos del modelo representan la posición del excursionista. Moverse en la dirección del gradiente implica ascender más rápidamente; por ello, para minimizar la pérdida, el algoritmo de aprendizaje avanza en la dirección opuesta al gradiente.
 
-**u) Significado del signo negativo en la regla de actualización**
-La regla de actualización de los pesos está dada por:
+**u) Significado del signo negativo en la regla de actualización** La regla de actualización de los pesos está dada por:
 
-\[
-w \leftarrow w - \eta \nabla L
-\]
+$$\mathbf{w} \leftarrow \mathbf{w} - \eta \nabla L$$
 
-El signo negativo indica que el objetivo del aprendizaje es **minimizar** la función de pérdida. Dado que el gradiente apunta hacia el aumento más rápido de la pérdida, restarlo permite desplazarse en la dirección contraria, conduciendo al modelo hacia un mínimo de la función. Este principio constituye la base del algoritmo de **descenso del gradiente**, tal como se presenta en el material del curso \[1].
+El signo negativo indica que el objetivo del aprendizaje es **minimizar** la función de pérdida. Dado que el gradiente apunta hacia el aumento más rápido de la pérdida, restarlo permite desplazarse en la dirección contraria, conduciendo al modelo hacia un mínimo de la función. Este principio constituye la base del algoritmo de **descenso del gradiente**, tal como se presenta en el material del curso [1].
 
 ### 10. Cálculo de gradientes
 
