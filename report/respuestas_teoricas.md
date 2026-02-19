@@ -223,34 +223,27 @@ En el caso de `η = 0.1`, la pérdida disminuye bruscamente al inicio pero luego
 Finalmente, con `η = 1.0`, la pérdida diverge rápidamente y aparecen valores infinitos y `NaN`, evidenciando inestabilidad numérica y fallo del descenso del gradiente.
 En conclusión, la tasa de aprendizaje `η = 0.01` resulta la más adecuada para este problema, mientras que `η = 1.0` provoca divergencia, tal como se anticipa teóricamente en el estudio del descenso del gradiente presentado en el Capítulo 2 del material del curso [1].
 
-### 13.	Evaluación en el conjunto de prueba
+## 13. Evaluación en el conjunto de prueba
 
-**ff) Predicciones en el conjunto de prueba**
-Utilizando los parámetros entrenados \(w\) y \(b\), se calcularon las predicciones sobre el conjunto de prueba normalizado mediante la propagación hacia adelante:
-\[
-\hat{y} = X_{\text{test}} w + b
-\]
-El vector de predicciones obtenido tiene forma \((4128, 1)\), coherente con el número de observaciones del conjunto de prueba.
+**ff) Predicciones en el conjunto de prueba** Utilizando los parámetros entrenados ($w$) y ($b$), se calcularon las predicciones sobre el conjunto de prueba normalizado mediante la propagación hacia adelante: 
 
-**gg) Error cuadrático medio (MSE) en test**
-El error cuadrático medio en el conjunto de prueba fue:
-\[
-\text{MSE}_{\text{test}} \approx 8617.35
-\]
-Este valor es **menor** que el MSE final del entrenamiento (\(\approx 34719.78\)), lo cual indica que el modelo **generaliza adecuadamente** y no presenta sobreajuste. La normalización de las características contribuye a esta buena capacidad de generalización.
+$$\hat{y} = X_{\text{test}} w + b$$
 
-**hh) Scatter plot: valores reales vs predicciones**
-Respuesta imagen: figures/hh)Predicciones_vs_valores_reales.png
-Se construyó un gráfico de dispersión comparando los valores reales \(y_{\text{test}}\) con las predicciones \(\hat{y}\), junto con la recta ideal \(y = x\).
-Los puntos se distribuyen razonablemente cerca de la diagonal, mostrando una correlación clara entre valores reales y predichos, aunque con dispersión, esperable en un modelo lineal sencillo.
+El vector de predicciones obtenido tiene forma ($4128, 1$), coherente con el número de observaciones del conjunto de prueba.
 
-**ii) Coeficiente de determinación \(R^2\)**
-El coeficiente de determinación obtenido fue:
-\[
-R^2 \approx 0.577
-\]
+**gg) Error cuadrático medio (MSE) en test** El error cuadrático medio en el conjunto de prueba fue: 
+
+$$\text{MSE}_{\text{test}} \approx 8617.35$$
+
+Este valor es **menor** que el MSE final del entrenamiento ($\approx 34719.78$), lo cual indica que el modelo **generaliza adecuadamente** y no presenta sobreajuste. La normalización de las características contribuye a esta buena capacidad de generalización.
+
+**hh) Scatter plot: valores reales vs predicciones** Respuesta imagen: `figures/hh)Predicciones_vs_valores_realies.png`. Se construyó un gráfico de dispersión comparando los valores reales ($y_{\text{test}}$) con las predicciones ($\hat{y}$), junto con la recta ideal ($y = x$). Los puntos se distribuyen razonablemente cerca de la diagonal, mostrando una correlación clara.
+
+**ii) Coeficiente de determinación ($R^2$)** El coeficiente de determinación obtenido fue: 
+
+$$R^2 \approx 0.577$$
+
 Este valor indica que el modelo explica aproximadamente el **57.7% de la varianza** de la variable objetivo en el conjunto de prueba. Para un perceptrón lineal sin capas ocultas, este resultado es consistente y confirma que el modelo captura una parte significativa de la estructura del problema.
-
 
 ## Reflexión final: Limitaciones del perceptrón simple
 
