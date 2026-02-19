@@ -16,19 +16,7 @@ Cada observación del dataset está descrita por **8 características numéricas
 **c) Vector de características de una observación:**
 Siguiendo la convención introducida en el **Capítulo 2 del material del curso (Arquitectura de las redes neuronales)**, las características de una observación se representan mediante un vector columna \(\mathbf{x}\), cuyos componentes corresponden a cada una de las variables de entrada. En este caso, al tratarse de 8 características, el vector se escribe como:
 
-\[
-\mathbf{x} =
-\begin{pmatrix}
-x_1 \\
-x_2 \\
-x_3 \\
-x_4 \\
-x_5 \\
-x_6 \\
-x_7 \\
-x_8
-\end{pmatrix}
-\]
+$$\mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5 \\ x_6 \\ x_7 \\ x_8 \end{pmatrix}$$
 
 ### 2. Características del conjunto de datos
 
