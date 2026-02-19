@@ -97,9 +97,9 @@ Valores reales:
 Las predicciones iniciales difieren significativamente de los valores reales y se encuentran cercanas a cero. Esto es esperable, ya que el modelo aún no ha sido entrenado y los pesos fueron inicializados con valores aleatorios pequeños.
 Por lo tanto, las predicciones iniciales **no son buenas**, pero establecen el punto de partida para el proceso de aprendizaje mediante descenso del gradiente [1].
 
-**m) Diagrama del flujo de datos**
-Respuesta: figures/m)Diagrama de flujo.jpeg
-El diagrama muestra el flujo de datos del perceptrón: cada característica de entrada \(x_i\) se multiplica por su peso \(w_i\), los productos se suman en una combinación lineal \(w^T x\), y posteriormente se añade el sesgo \(b\) para obtener la salida \(y_{\text{pred}}\).
+**m) Diagrama del flujo de datos** Respuesta: `figures/m)Diagrama de flujo.jpeg` 
+
+El diagrama muestra el flujo de datos del perceptrón: cada característica de entrada ($x_i$) se multiplica por su peso ($w_i$), los productos se suman en una combinación lineal ($\mathbf{w}^T \mathbf{x}$), y posteriormente se añade el sesgo ($b$) para obtener la salida ($y_{\text{pred}}$).
 
 ### 8. Función de pérdida
 
