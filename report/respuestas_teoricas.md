@@ -257,6 +257,67 @@ La tasa de aprendizaje controla el tamaño del paso que se da en cada iteración
 Se ejecutó una iteración completa del algoritmo: propagación hacia adelante, cálculo de la pérdida, cálculo de gradientes y actualización de parámetros. La pérdida **disminuyó** tras la actualización, pasando de **92964.53** a **90167.59**, lo cual indica que el perceptrón ajustó sus parámetros en la dirección que reduce el error. Este comportamiento confirma que el algoritmo de retropropagación y el descenso del gradiente están funcionando correctamente y que el modelo comienza a aprender a partir de los datos [1].
 
 
+## Parte 4: Entrenamiento completo
+
+### 12.	Implementación del ciclo de entrenamiento completo
+
+**bb) Implementación del ciclo de entrenamiento**
+La función `entrenar_perceptron` se completó integrando todas las etapas del aprendizaje supervisado vistas anteriormente: propagación hacia adelante, cálculo de la pérdida mediante MSE, cálculo de los gradientes y actualización de los parámetros usando descenso del gradiente.
+En cada época se almacena el valor de la pérdida para analizar la evolución del entrenamiento, siguiendo el flujo descrito en el Capítulo 2 del material del curso [1].
+
+**cc) Entrenamiento del modelo y gráfica de la pérdida**
+El modelo se entrenó utilizando una tasa de aprendizaje `learning_rate = 0.01` y `epochs = 1000`. Se graficó el historial de la función de pérdida (MSE) en función del número de épocas, observándose una disminución pronunciada al inicio del entrenamiento y una posterior estabilización.
+La gráfica de la evolución de la pérdida se incluye como parte de la entrega en figures/cc)curva_perdida_entrenamiento.png.
+
+**dd) Convergencia del modelo**
+Sí, el modelo converge. Esto se evidencia en la gráfica de la pérdida, donde el MSE disminuye rápidamente en las primeras épocas y luego se estabiliza alrededor de un valor casi constante. La ausencia de oscilaciones grandes o crecimiento descontrolado de la pérdida indica que el algoritmo de descenso del gradiente alcanzó una región cercana a un mínimo, lo que corresponde al concepto de convergencia descrito en el Capítulo 2 [1].
+
+**ee) Comparación de diferentes tasas de aprendizaje**
+Respuesta imagenes: ee)Comparación_de_tasas_de_aprendizaje01 ; ee)Comparación_de_tasas_de_aprendizaje02
+Se entrenó el perceptrón utilizando cuatro tasas de aprendizaje:  
+`η = 0.001`, `0.01`, `0.1` y `1.0`, y se comparó la evolución de la pérdida (MSE) a lo largo de las épocas.
+Para `η = 0.001`, la pérdida disminuye de forma estable pero muy lenta, indicando un aprendizaje seguro aunque poco eficiente.  
+Con `η = 0.01`, el modelo presenta una caída rápida de la pérdida y una posterior estabilización, logrando el mejor equilibrio entre velocidad de convergencia y estabilidad.  
+En el caso de `η = 0.1`, la pérdida disminuye bruscamente al inicio pero luego oscila alrededor de un valor mayor, lo que sugiere que el paso de actualización es demasiado grande y sobrepasa el mínimo.  
+Finalmente, con `η = 1.0`, la pérdida diverge rápidamente y aparecen valores infinitos y `NaN`, evidenciando inestabilidad numérica y fallo del descenso del gradiente.
+En conclusión, la tasa de aprendizaje `η = 0.01` resulta la más adecuada para este problema, mientras que `η = 1.0` provoca divergencia, tal como se anticipa teóricamente en el estudio del descenso del gradiente presentado en el Capítulo 2 del material del curso [1].
+
+### 13.	Evaluación en el conjunto de prueba
+
+**ff) Predicciones en el conjunto de prueba**
+Utilizando los parámetros entrenados \(w\) y \(b\), se calcularon las predicciones sobre el conjunto de prueba normalizado mediante la propagación hacia adelante:
+\[
+\hat{y} = X_{\text{test}} w + b
+\]
+El vector de predicciones obtenido tiene forma \((4128, 1)\), coherente con el número de observaciones del conjunto de prueba.
+
+**gg) Error cuadrático medio (MSE) en test**
+El error cuadrático medio en el conjunto de prueba fue:
+\[
+\text{MSE}_{\text{test}} \approx 8617.35
+\]
+Este valor es **menor** que el MSE final del entrenamiento (\(\approx 34719.78\)), lo cual indica que el modelo **generaliza adecuadamente** y no presenta sobreajuste. La normalización de las características contribuye a esta buena capacidad de generalización.
+
+**hh) Scatter plot: valores reales vs predicciones**
+Respuesta imagen: figures/hh)Predicciones_vs_valores_reales.png
+Se construyó un gráfico de dispersión comparando los valores reales \(y_{\text{test}}\) con las predicciones \(\hat{y}\), junto con la recta ideal \(y = x\).
+Los puntos se distribuyen razonablemente cerca de la diagonal, mostrando una correlación clara entre valores reales y predichos, aunque con dispersión, esperable en un modelo lineal sencillo.
+
+**ii) Coeficiente de determinación \(R^2\)**
+El coeficiente de determinación obtenido fue:
+\[
+R^2 \approx 0.577
+\]
+Este valor indica que el modelo explica aproximadamente el **57.7% de la varianza** de la variable objetivo en el conjunto de prueba. Para un perceptrón lineal sin capas ocultas, este resultado es consistente y confirma que el modelo captura una parte significativa de la estructura del problema.
+
+
+
+
+
+
+
+
+
 
 
 
