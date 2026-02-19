@@ -126,38 +126,29 @@ Que la función de pérdida se estabilice significa que su valor deja de disminu
 
 ### 9. Cálculo gradiente
 
-**r) Derivación de \(\partial L / \partial w\)**
-Partimos de la función de pérdida para regresión:
+## 9. Cálculo gradiente
 
-\[
-L = \frac{1}{m} \sum_{i=1}^{m} (\hat{y}_i - y_i)^2
-\]
+**r) Derivación de ($\frac{\partial L}{\partial \mathbf{w}}$)** Partimos de la función de pérdida para regresión:
+
+$$L = \frac{1}{m} \sum_{i=1}^{m} (\hat{y}_i - y_i)^2$$
 
 donde, para una activación lineal, las predicciones del modelo están dadas por:
 
-\[
-\hat{y} = Xw + b
-\]
+$$\hat{\mathbf{y}} = X \mathbf{w} + b$$
 
 Definimos el vector de error como:
 
-\[
-e = \hat{y} - y
-\]
+$$\mathbf{e} = \hat{\mathbf{y}} - \mathbf{y}$$
 
 La función de pérdida puede escribirse en forma matricial como:
 
-\[
-L = \frac{1}{m} e^T e
-\]
+$$L = \frac{1}{m} \mathbf{e}^T \mathbf{e}$$
 
-Al derivar la pérdida respecto al vector de pesos \(w\) y aplicar las reglas de derivación matricial, se obtiene:
+Al derivar la pérdida respecto al vector de pesos ($\mathbf{w}$) y aplicar las reglas de derivación matricial, se obtiene:
 
-\[
-\frac{\partial L}{\partial w} = \frac{2}{m} X^T (\hat{y} - y)
-\]
+$$\frac{\partial L}{\partial \mathbf{w}} = \frac{2}{m} X^T (\hat{\mathbf{y}} - \mathbf{y})$$
 
-Esta expresión indica cómo varía la pérdida ante cambios en los pesos del modelo y corresponde a la formulación presentada en el **Capítulo 2 del material del curso** para problemas de regresión entrenados mediante descenso del gradiente \[1].
+Esta expresión indica cómo varía la pérdida ante cambios en los pesos del modelo y corresponde a la formulación presentada en el **Capítulo 2 del material del curso** para problemas de regresión entrenados mediante descenso del gradiente [1].
 
 **s) Derivación de \(\partial L / \partial b\)**
 El sesgo \(b\) afecta de igual forma a todas las predicciones del modelo, ya que:
