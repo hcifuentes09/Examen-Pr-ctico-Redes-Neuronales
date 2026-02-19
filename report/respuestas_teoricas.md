@@ -76,9 +76,7 @@ El sesgo \( b \) se inicializa en cero porque **no introduce problemas de simetr
 
 ### 7. Implementación de la suma ponderada (propagación hacia adelante)
 
-**j) ¿Por qué usamos \( X \mathbf{w} \) en lugar de \( \mathbf{w}^T X \)?**
-Cuando \( X \) tiene forma \( (m,n) \) y el vector de pesos \( \mathbf{w} \) tiene forma \( (n,1) \),
-el producto matricial \( X \mathbf{w} \) produce un vector columna de dimensión \( (m,1) \), correspondiente a una predicción por observación. La expresión \( \mathbf{w}^T X \) no es compatible dimensionalmente en este contexto. Este uso sigue directamente la formulación matricial del perceptrón presentada en el **Capítulo 2 del material del curso** [1].
+**j) ¿Por qué usamos ($X \mathbf{w}$) en lugar de ($\mathbf{w}^T X$)?** Cuando ($X$) tiene forma ($m, n$) y el vector de pesos ($\mathbf{w}$) tiene forma ($n, 1$), el producto matricial ($X \mathbf{w}$) produce un vector columna de dimensión ($m, 1$), correspondiente a una predicción por observación. La expresión ($\mathbf{w}^T X$) no es compatible dimensionalmente en este contexto. Este uso sigue directamente la formulación matricial del perceptrón presentada en el **Capítulo 2 del material del curso** [1].
 
 **k) ¿Qué función de activación se usa en este problema de regresión? ¿Por qué?**
 En este problema de regresión se utiliza una **función de activación lineal (identidad)**, es decir, no se aplica ninguna transformación no lineal a la salida. Esto se debe a que el objetivo es predecir un **valor continuo**, y la salida del modelo debe pertenecer a la recta real, tal como se describe en el **Capítulo 2** [1].
