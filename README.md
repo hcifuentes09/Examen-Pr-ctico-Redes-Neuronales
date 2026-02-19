@@ -12,39 +12,40 @@ El proyecto integra tanto el desarrollo práctico en Python como el análisis te
 california-housing-perceptron/
 │
 ├── notebooks/
-│ └── exploration.ipynb
-│ → Notebook principal con todo el código del proyecto:
-│ carga de datos, exploración, implementación del perceptrón,
-│ entrenamiento, evaluación y generación de gráficas.
+│   └── exploration.ipynb
+│       → Notebook principal con todo el código del proyecto:
+│         carga de datos, exploración, implementación del perceptrón,
+│         entrenamiento, evaluación y generación de gráficas.
 │
 ├── report/
-│ └── respuestas_teoricas.md
-│ → Documento con todas las respuestas teóricas del examen,
-│ debidamente argumentadas y referenciadas.
+│   └── respuestas_teoricas.md
+│       → Documento con todas las respuestas teóricas del examen,
+│         debidamente argumentadas y referenciadas.
 │
 ├── figures/
-│ ├── cc) curva_perdida_entrenamiento.png
-│ ├── ee) Comparación_de_tasas_de_aprendizaje01.png
-│ ├── ee) Comparación_de_tasas_de_aprendizaje02.png
-│ └── hh) Predicciones_vs_valores_reales.png
-│ → Gráficas generadas durante el entrenamiento y la evaluación
-│ del modelo, solicitadas como parte del entregable.
+│   ├── cc) curva_perdida_entrenamiento.png
+│   ├── ee) Comparación_de_tasas_de_aprendizaje01.png
+│   ├── ee) Comparación_de_tasas_de_aprendizaje02.png
+│   └── hh) Predicciones_vs_valores_reales.png
+│       → Gráficas generadas durante el entrenamiento y la evaluación
+│         del modelo, solicitadas como parte del entregable.
 │
 ├── src/
-│ → Carpeta reservada para una posible modularización futura del código.
-│ En esta entrega, el desarrollo se realiza íntegramente en el notebook.
+│   → Carpeta reservada para una posible modularización futura del código.
+│     En esta entrega, el desarrollo se realiza íntegramente en el notebook.
 │
 ├── requirements.txt
-│ → Lista de dependencias necesarias para ejecutar el proyecto.
+│   → Lista de dependencias necesarias para ejecutar el proyecto.
 │
 ├── .gitignore
-│ → Archivos y carpetas excluidos del control de versiones (por ejemplo, venv).
+│   → Archivos y carpetas excluidos del control de versiones (por ejemplo, venv).
 │
 ├── venv/
-│ → Entorno virtual de Python utilizado durante el desarrollo (no versionado).
+│   → Entorno virtual de Python utilizado durante el desarrollo (no versionado).
 │
 └── README.md
-│ → Descripción general del proyecto y guía de uso.
+│   → Descripción general del proyecto y guía de uso.
+
 
 ## Contenido del proyecto
 
