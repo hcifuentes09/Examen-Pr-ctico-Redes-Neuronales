@@ -67,10 +67,9 @@ Se utiliza `fit_transform` en el conjunto de entrenamiento para ajustar los par�
 Es conveniente inicializar los pesos con valores aleatorios pequeños para **romper la simetría** del modelo y permitir que cada peso evolucione de manera diferente durante el entrenamiento.  
 Si todos los pesos se inicializaran en cero, el gradiente sería idéntico para cada uno y el modelo no podría aprender representaciones diferenciadas.  Además, valores pequeños evitan activaciones excesivamente grandes al inicio, favoreciendo una dinámica estable del descenso del gradiente, como se describe en el **Capítulo 2 del material del curso** [1].
 
-**h) ¿Qué forma debe tener el vector de pesos \( \mathbf{w} \)?**
-Según la notación del **Capítulo 2**, el vector de pesos \( \mathbf{w} \) debe representarse como un **vector columna** de dimensión \( (n,1) \), donde \( n \) es el número de características de entrada. En este caso, como el conjunto de datos tiene **8 características**, se obtiene  
-\( \mathbf{w} \in \mathbb{R}^{8 \times 1} \), lo cual se verifica al imprimir `w.shape` tras llamar a la función de inicialización [1].
+**h) ¿Qué forma debe tener el vector de pesos ($\mathbf{w}$)?** Según la notación del **Capítulo 2**, el vector de pesos ($\mathbf{w}$) debe representarse como un **vector columna** de dimensión ($n, 1$), donde ($n$) es el número de características de entrada. En este caso, como el conjunto de datos tiene **8 características**, se obtiene:
 
+($\mathbf{w} \in \mathbb{R}^{8 \times 1}$), lo cual se verifica al imprimir `w.shape` tras llamar a la función de inicialización [1].
 **i) ¿Por qué el sesgo \( b \) se inicializa típicamente en cero mientras los pesos no?**
 El sesgo \( b \) se inicializa en cero porque **no introduce problemas de simetría** como los pesos y actúa únicamente como un término de desplazamiento. Durante el entrenamiento, el sesgo se ajusta mediante descenso del gradiente junto con los pesos, permitiendo desplazar la salida del modelo sin afectar la dirección inicial del aprendizaje [1].
 
