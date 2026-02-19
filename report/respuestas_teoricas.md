@@ -1,5 +1,7 @@
 # Examen Práctico – Redes Neuronales
 
+## Henry Santiago Cifuentes Serrano
+## Juan Diego Cifuentes oliva
 
 ## Parte I: Exploración del Conjunto de Datos
 
@@ -311,25 +313,21 @@ R^2 \approx 0.577
 Este valor indica que el modelo explica aproximadamente el **57.7% de la varianza** de la variable objetivo en el conjunto de prueba. Para un perceptrón lineal sin capas ocultas, este resultado es consistente y confirma que el modelo captura una parte significativa de la estructura del problema.
 
 
+## Reflexión final: Limitaciones del perceptrón simple
 
+### 14. Limitaciones del perceptrón simple
 
+**jj) Tipo de relación que puede modelar un perceptrón simple**
+Un perceptrón simple (sin capas ocultas) solo puede modelar **relaciones lineales** entre las características de entrada y la variable objetivo.  
+En este caso, el modelo aprende una combinación lineal de las variables del conjunto de datos para aproximar el precio de las viviendas, tal como se describe en el **Capítulo 2 del material del curso** [1].
 
+**kk) Extensión del modelo para relaciones no lineales**
+Si la relación real entre las características y el precio de las viviendas fuera altamente no lineal, el modelo podría extenderse incorporando **capas ocultas con funciones de activación no lineales**, dando lugar a un **perceptrón multicapa (MLP)**.  
+Estas capas permiten transformar el espacio de características original y capturar patrones complejos que no pueden representarse mediante una sola combinación lineal [1].
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+**ll) Teorema de Aproximación Universal y uso de redes profundas**
+El **Teorema de Aproximación Universal** garantiza que una red neuronal con **una sola capa oculta**, un número suficiente de neuronas y una función de activación no lineal puede aproximar cualquier función continua sobre un dominio compacto con la precisión deseada [1].  
+Sin embargo, en la práctica se utilizan **redes profundas** porque permiten representar funciones complejas de forma más eficiente, usando menos neuronas por capa, mejor generalización y una estructura jerárquica que facilita el aprendizaje de patrones complejos.
 
 
 ## Referencias
