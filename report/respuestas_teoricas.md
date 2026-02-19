@@ -105,13 +105,9 @@ El diagrama muestra el flujo de datos del perceptrón: cada característica de e
 **n) Uso del cuadrado en la función de pérdida**
 Las diferencias se elevan al cuadrado para penalizar con mayor severidad los errores grandes y asegurar que la función de pérdida sea suave y diferenciable. Esta propiedad es fundamental para aplicar el descenso del gradiente, ya que el MSE posee derivadas continuas respecto a los parámetros del modelo, tal como se describe en el Capítulo 2 del material del curso [1].
 
-**o) Pérdida inicial del modelo**
-La pérdida inicial del modelo, calculada con pesos aleatorios y sesgo inicial, es:
+**o) Pérdida inicial del modelo** La pérdida inicial del modelo, calculada con pesos aleatorios y sesgo inicial, es:
 
-\[
-\text{MSE}_{\text{inicial}} = 5.63
-\]
-
+$$\text{MSE}_{\text{inicial}} = 5.63$$
 Este valor representa el error del modelo antes del entrenamiento y se utilizará como referencia para evaluar la reducción de la pérdida tras aplicar el descenso del gradiente durante el proceso de aprendizaje.
 
 **p) Ventajas del MSE en optimización**
